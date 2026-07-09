@@ -5,6 +5,12 @@ import os
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
+if api_key is None:
+    raise ValueError("A chave da API não foi definida no .env")
+
+print("Chave carregada com sucesso!")
+
+
 numero_dias = 7
 numero_criancas = 2
 atividade = "praia"
