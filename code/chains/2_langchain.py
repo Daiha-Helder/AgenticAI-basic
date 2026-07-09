@@ -11,6 +11,8 @@ set_debug(True)
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
+if api_key is None:
+    raise ValueError("A chave da API não foi definida no .env")
 
 # modelo de formato de saída
 class Destino(BaseModel):
@@ -19,8 +21,6 @@ class Destino(BaseModel):
 
 parseador = JsonOutputParser(pydantic_object=Destino)
 
-if api_key is None:
-    raise ValueError("A chave da API não foi definida no .env")
 
 print("Chave carregada com sucesso!")
 
