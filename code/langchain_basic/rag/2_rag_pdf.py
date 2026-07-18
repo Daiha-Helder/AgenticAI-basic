@@ -26,7 +26,7 @@ modelo = ChatOpenAI(
 
 embeddings = OpenAIEmbeddings()
 
-documentos_paths = glob.glob('documents/*.pdf')
+documentos_paths = glob.glob('documents/bank/*.pdf')
 
 documentos = sum(
     [

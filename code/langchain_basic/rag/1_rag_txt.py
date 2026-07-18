@@ -25,7 +25,7 @@ modelo = ChatOpenAI(
 
 embeddings = OpenAIEmbeddings()
 documento = TextLoader(
-    file_path = "documents/GTB_gold_Nov23.txt",
+    file_path = "documents/bank/GTB_gold_Nov23.txt",
     encoding="utf-8"
 ).load()
 

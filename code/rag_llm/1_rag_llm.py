@@ -17,7 +17,7 @@ if api_key is None:
 
 print("Chave carregada com sucesso!")
 
-path_pdf = 'documents/Regras_do_Jogo.pdf'
+path_pdf = 'documents/soccer/Regras_do_Jogo.pdf'
 
 
 # Carrega o PDF
