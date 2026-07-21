@@ -22,7 +22,7 @@ print("Chave carregada com sucesso!")
 # %% Carrega documentos 
 
 # Lista os caminhos dos pdfc com as bulas
-# documents_path = glob.glob('documents/medicine/*.pdf')
+documents_path = glob.glob('documents/medicine/*.pdf')
 
 # Lista que armazenará todos os documentos carregados
 documentos = []
