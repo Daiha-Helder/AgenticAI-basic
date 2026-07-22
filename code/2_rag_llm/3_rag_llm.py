@@ -23,7 +23,7 @@ print("Chave carregada com sucesso!")
 # %% CONFIGURAÇÕES GERAIS
 
 # Diretório do banco vetorial
-PERSIST_DIRECTORY = "./code/rag_llm/rh"
+PERSIST_DIRECTORY = "./code/rag_llm/chroma_rh"
 
 # Modelo de embedding
 EMBEDDING_MODEL = "text-embedding-3-small"
