@@ -81,6 +81,7 @@ def rag(pergunta):
 
     return cadeia.invoke({"query": pergunta, "contexto": contexto})
 
+set_debug(False)
 print("Resposta sem RAG")
 print(no_rag("O que devo fazer se tiver um item roubado?"))
 
