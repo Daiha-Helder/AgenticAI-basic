@@ -276,7 +276,7 @@ def iniciar_conversacao_com_agente():
 
 
 if __name__ == "__main__":
-    iniciar_conversacao_com_agente()
+    
     # Interação 1: Consulta Estoque
     # pergunta_1 = "Quantos mouses gamers estão no inventário?"
     # print(f"**Interação 1:{pergunta_1}**")
@@ -326,3 +326,5 @@ if __name__ == "__main__":
     # resposta_7 = run_react_agent(pergunta_7)
     # print(f"\n**RESPOSTA FINAL DO AGENTE 7:** {resposta_7}\n")
     # print("\n--- Fim das Interações ---")
+
+    iniciar_conversacao_com_agente()
