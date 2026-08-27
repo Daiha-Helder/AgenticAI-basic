@@ -99,33 +99,54 @@ Procure informações apenas quando tiver certeza o que você quer. \
 Se precisar pesquisar alguma informação antes de fazer uma pergunta de acompanhamento, você tem permissão para fazer isso!.  
 """
 
-
-query_passado = "Qual país sediou a Copa do Mundo de futebol masculino em 1998? Quem foi o campeão e qual o placar da final? \
-Qual era o Produto Interno Bruto (PIB) desse país no ano da Copa e qual é o PIB atual (últimos dados disponíveis, como 2023 ou 2024)? \
-Qual a capital desse país e qual sua moeda atual? Responda a cada pergunta separadamente."
-
-
 model = ChatGoogleGenerativeAI(
     model='gemini-3.5-flash-lite',
     temperature = 0
 )
 
 abot = Agent(model, [tool_instance], system=prompt)
-messages = [HumanMessage(content=query_passado)]
 
-print("Iniciando interação do agente: ")
-final_result_state = None
 
-for s in abot.graph.stream({"messages": messages}):
-    print(s)
-    print("---")
-    final_result_state = s
 
-print("\nResultado Final:")
-if final_result_state and ('llm' in final_result_state) and final_result_state['llm']['messages']:
-    print(final_result_state['llm']['messages'][-1].content)
-else:
-    print("Nenhum resultado final ou resultado inesperado.")
+def main():
 
+    print("\n--- Agente de Pesquisa Interativo ---")
+    print("Digite sua pergunta ou 'sair' para encerrar.")
+
+    while True:
+        user_input = input("\nVocê: ")
+        if user_input.lower() == "sair":
+            print("Agente: Encerrando a conversa. Até logo!")
+            break
+
+        messages = [HumanMessage(content=user_input)]
+
+        print("Agente: Pensando e buscando...")
+        final_result_state = None
+
+        try:
+            
+            current_state = {}
+            for s in abot.graph.stream({"messages":messages}):
+                current_state.update(s)
+
+            if 'llm' in current_state and 'messages' in current_state['llm'] and current_state['llm']['messages']:
+                final_message = current_state['llm']['messages'][-1]
+                if hasattr(final_message, 'content'):
+                    print(final_message.content)
+                else:
+                    print("Não foi possível extrair o conteúdo da resposta final do LLM.")
+            else:
+                print("Não foi possível obter uma resposta do agente para esta pergunta.")
+
+        except Exception as e:
+            
+            print(f"Agente: Ocorreu um erro durante a execução: {e}")
+            print("Tente novamente ou digite 'sair'.")
+
+    print("\n --- Conversa Encerrada ---")
+
+if __name__ == "__main__":
+    main()
 
 
