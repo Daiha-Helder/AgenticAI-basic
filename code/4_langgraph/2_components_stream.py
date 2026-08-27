@@ -14,7 +14,8 @@ from langchain_core.messages import (
     BaseMessage
 )
 
-from langchain_community.tools.tavily_search import TavilySearchResults
+# from langchain_community.tools.tavily_search import TavilySearchResults
+from langchain_tavily import TavilySearch
 
 import os 
 from dotenv import load_dotenv
@@ -28,7 +29,11 @@ GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 TAVILY_API_KEY = os.getenv('TAVILY_API_KEY')
 
 # %% Defininido Tavily tool
-tool_instance = TavilySearchResults(
+# tool_instance = TavilySearchResults(
+#     max_results = 4
+# )
+
+tool_instance = TavilySearch(
     max_results = 4
 )
 
